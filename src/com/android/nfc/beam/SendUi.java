@@ -677,7 +677,8 @@ public class SendUi implements Animator.AnimatorListener, View.OnTouchListener,
             mScreenshotView.setScaleX(1.0f);
             mScreenshotView.setScaleY(1.0f);
         } else if (animation == mPreAnimator) {
-            if (mHardwareAccelerated && (mState == STATE_W4_TOUCH || mState == STATE_W4_NFC_TAP)) {
+            if (mHardwareAccelerated && (mState == STATE_W4_TOUCH || mState == STATE_W4_NFC_TAP) &&
+                    (!mScaleUpAnimator.isStarted() && !mSuccessAnimatorSet.isStarted())) {
                 mFireflyRenderer.start(mSurface, mSurfaceWidth, mSurfaceHeight);
             }
         }
