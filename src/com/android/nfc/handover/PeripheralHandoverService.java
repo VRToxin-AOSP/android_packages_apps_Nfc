@@ -254,6 +254,11 @@ public class PeripheralHandoverService extends Service implements BluetoothPerip
     @Override
     public boolean onUnbind(Intent intent) {
         // prevent any future callbacks to the client, no rebind call needed.
+
+        if (mBluetoothPeripheralHandover != null && mBluetoothPeripheralHandover.hasStarted()) {
+            mBluetoothPeripheralHandover.complete(false);
+        }
+
         return false;
     }
 }
